@@ -1,29 +1,41 @@
 body {
+    margin: 0;
+    padding: 0;
     background: radial-gradient(circle, #050510, #000);
     color: #00f5ff;
-    font-family: Orbitron, Arial;
+    font-family: Orbitron, Arial, sans-serif;
     text-align: center;
+    overflow: hidden;
 }
 
+/* Title */
 .title {
-    font-size: 48px;
+    font-size: clamp(26px, 6vw, 48px);
     text-shadow: 0 0 20px #00f5ff;
+    margin-top: 10px;
 }
 
+/* HUD */
 .hud {
-    font-size: 20px;
+    font-size: clamp(14px, 4vw, 20px);
     margin-bottom: 10px;
 }
 
+/* Game Arena (Responsive) */
 #arena {
-    width: 500px;
-    height: 400px;
+    width: 90vw;
+    max-width: 500px;
+    height: 70vh;
+    max-height: 400px;
     margin: auto;
     border: 2px solid #00f5ff;
     position: relative;
     box-shadow: 0 0 30px #00f5ff;
+    border-radius: 12px;
+    overflow: hidden;
 }
 
+/* Target Ball */
 #target {
     width: 40px;
     height: 40px;
@@ -33,25 +45,31 @@ body {
     box-shadow: 0 0 20px #ff00ff;
     cursor: pointer;
     animation: pulse 0.6s infinite alternate;
+    touch-action: manipulation;
 }
 
+/* Glow Animation */
 @keyframes pulse {
     from { box-shadow: 0 0 10px #ff00ff; }
     to { box-shadow: 0 0 30px #ff00ff; }
 }
+
+/* Controls text */
 .controls {
     margin-top: 10px;
-    font-size: 16px;
+    font-size: clamp(12px, 3vw, 16px);
     color: #ff00ff;
     text-shadow: 0 0 10px #ff00ff;
 }
+
+/* Popup Overlay */
 .popup {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.8); /* dark translucent overlay */
+    background: rgba(0,0,0,0.8);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -62,22 +80,26 @@ body {
     display: none;
 }
 
+/* Popup Box */
 .popup-content {
-    background: #0ff0fc; /* neon cyan */
-    border: 2px solid #ff00ff; /* neon pink border */
-    padding: 30px 50px;
+    background: #0ff0fc;
+    border: 2px solid #ff00ff;
+    padding: 25px 40px;
     text-align: center;
     color: #000;
-    font-size: 24px;
-    font-family: 'Arial', sans-serif;
+    font-size: clamp(18px, 4vw, 24px);
+    font-family: Arial, sans-serif;
     border-radius: 15px;
     box-shadow: 0 0 20px #ff00ff, 0 0 40px #0ff0fc;
+    width: 85%;
+    max-width: 350px;
 }
 
+/* Popup Buttons */
 .popup-content button {
     margin-top: 20px;
     padding: 10px 20px;
-    font-size: 18px;
+    font-size: clamp(14px, 4vw, 18px);
     background: #ff00ff;
     color: #fff;
     border: none;
@@ -89,4 +111,20 @@ body {
 .popup-content button:hover {
     background: #0ff0fc;
     color: #000;
+}
+#start-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    color: #00f5ff;
+    font-size: clamp(22px, 6vw, 36px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1000;
+    text-shadow: 0 0 20px #00f5ff;
 }
