@@ -10,9 +10,11 @@ COPY frontend ./frontend
 
 # Install dependencies
 RUN pip install --no-cache-dir -r backend/requirements.txt
+# Add gunicorn
+RUN pip install --no-cache-dir gunicorn
 
 # Expose port
 EXPOSE 5000
 
-# Start the app
-CMD ["python", "backend/app.py"]
+# Start the app using Gunicorn
+CMD ["gunicorn", "backend.app:app", "--bind", "0.0.0.0:5000", "--workers", "2"]
